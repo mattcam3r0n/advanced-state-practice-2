@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CarListing from "./components/CarListing";
+import PropTypes from "prop-types";
 
 class App extends Component {
   constructor() {
@@ -27,7 +28,6 @@ class App extends Component {
       .map((c, i) => {
         return <CarListing key={i} car={c} />;
       });
-console.log(this.state, carListings);
     return (
       <div>
         <div className="switcher-wrapper">
@@ -497,7 +497,10 @@ console.log(this.state, carListings);
                           className="form-control"
                           onChange={(e) => {
                             this.setState({
-                              currentYear: e.target.value === "Select Year" ? null : e.target.value,
+                              currentYear:
+                                e.target.value === "Select Year" ? 
+                                  null :
+                                  e.target.value,
                             });
                           }}
                         >
@@ -523,7 +526,10 @@ console.log(this.state, carListings);
                           className="form-control"
                           onChange={(e) => {
                             this.setState({
-                              currentMake: e.target.value === "Select Brand" ? null : e.target.value,
+                              currentMake:
+                                e.target.value === "Select Brand" ?
+                                  null :
+                                  e.target.value,
                             });
                           }}
                         >
@@ -1340,5 +1346,11 @@ console.log(this.state, carListings);
     );
   }
 }
+
+App.propTypes = {
+  state: {
+    carsForSale: PropTypes.array.isRequired
+  },
+};
 
 export default App;
